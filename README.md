@@ -202,9 +202,9 @@ Para ejecutarlo hacemos clic en el botón ***Start***.
 
 Como el runbook tiene parámetros, habrá que rellerarlos. Todos los campos son obligatorios. 
 
-* ***RGNAME*** Es el nombre del grupo de recursos que tiene la VM.
-* ***VMNAME*** Es el nombre de la VM.
-* ***STARTSTOPACTION*** Debe ser ***Start*** o ***Stop***. No se admite ningún otro valor.
+* ***RGNAME***: Es el nombre del grupo de recursos que tiene la VM.
+* ***VMNAME***: Es el nombre de la VM.
+* ***STARTSTOPACTION***: Debe ser ***Start*** o ***Stop***. No se admite ningún otro valor.
 
 
 
