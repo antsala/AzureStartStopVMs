@@ -79,7 +79,7 @@ De vuelta en VSC, en el panel izquierdo debemos ver ya el runbook creado desde l
 
 ![VSC](./img/202303042112.png)
 
-Esto permitirá usar toda la potencia de este editor. El contenido del runbook es el siguiente:
+Esto permitirá usar toda la potencia de este editor. El contenido del runbook es el siguiente...
 ```
 Param (
     [Parameter (Mandatory = $true)] [String] $rgName = "FdlSM_PruebaLabs",
@@ -173,6 +173,27 @@ else {
     Write-Output "La acción" $startStopAction "no se puede procesar."
 }
 ```
+
+Copialo y pégalo en VSC. A continuación lo guardamos con ***CTRL+S***.
+
+El runbook lo tenemos en local. Para subirlo a Azure hay que publicarlo. Para ello, hacemos clic ***con el botón derecho***, en el nombre del runbook que tenemos en el panel izquierdo. Aparecerá un menú contextual en el que debemos seleccionar la opción ***Publish Runbook***.
+
+VSC pedirá permiso para la publicación. Hacemos clic en ***Yes***
+
+![Yes](./img/202303042122.png)
+
+Cuando se haya subido, VSC mostrará un mensaje en la parte inferior derecha de su ventana.
+
+![OK](./img/202303042124.png)
+
+Es el momento de comprobar el resultado en la web de Azure. Hacemos clic en en link del runbook...
+
+![RB link](./img/202303042127.png)
+
+Aquí veremos dos botones. El botón ***View*** permitirá en forma de solo lectura el código del runbook, mientras que ***Edit*** permitirá editarlo. Esto último no lo recomendamos y aconsejamos hacerlo en VSC, para posteriormente publicarlo.
+
+![view/edit](./img/202303042129.png)
+
 
 
 
