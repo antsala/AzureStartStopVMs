@@ -194,6 +194,22 @@ Aquí veremos dos botones. El botón ***View*** permitirá en forma de solo lect
 
 ![view/edit](./img/202303042129.png)
 
+## 7. Ejecución manual del runbook.
+
+Para ejecutarlo hacemos clic en el botón ***Start***.
+
+![Start](./img/202303042130.png)
+
+Como el runbook tiene parámetros, habrá que rellerarlos. Todos los campos son obligatorios. 
+
+* ***RGNAME*** Es el nombre del grupo de recursos que tiene la VM.
+* ***VMNAME*** Es el nombre de la VM.
+* ***STARTSTOPACTION*** Debe ser ***Start*** o ***Stop***. No se admite ningún otro valor.
+
+
+
+![Parámetros](./img/202303042134.png)
+
 
 
 
