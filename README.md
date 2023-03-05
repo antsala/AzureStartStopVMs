@@ -3,7 +3,7 @@ Configuración de la automatización para programar el inicio y el apagado de VM
 
 Contenidos.
 
-1. Configuración de VSC para trabajar con Azure Automation.
+1. [Configuración de VSC para trabajar con Azure Automation] (https://github.com/antsala/AzureStartStopVMs#1-configuraci%C3%B3n-de-vsc-para-trabajar-con-azure-automation)
 2. Creación del grupo de recursos.
 3. Creación de la cuenta de automatización y asignación de rol.
 4. Verificar la conexión de VSC con la cuenta de automatización recién creada.
