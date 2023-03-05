@@ -1,13 +1,13 @@
 Param (
-    [Parameter (Mandatory = $true)] [String] $rgName = "FdlSM_PruebaLabs",
     [Parameter (Mandatory = $true)] [String] $vmName = "HyperV02",
+    [Parameter (Mandatory = $true)] [String] $rgName = "FdlSM_PruebaLabs",
     [Parameter (Mandatory = $true)] [String] $startStopAction = "Start"
 )
 
 function doUntilCondition {
     param(
-        [Parameter(Mandatory = $true, Position = 0)] [String]$rg,  
-        [Parameter(Mandatory = $true, Position = 1)] [String]$vm,
+        [Parameter(Mandatory = $true, Position = 0)] [String]$vm,
+        [Parameter(Mandatory = $true, Position = 1)] [String]$rg,  
         [Parameter(Mandatory = $true, Position = 2)] [String]$powerState
     )
 
@@ -15,7 +15,7 @@ function doUntilCondition {
     $lastProvisioningState = ""
 
     # Tomo el estado de aprovisionamiento de la VM.
-    $provisioningState = (Get-AzVM -resourcegroupname $rg -name $vm -Status).Statuses[1].Code
+    $provisioningState = (Get-AzVM -name $vm -resourcegroupname $rg -Status).Statuses[1].Code
     
     # Determino la condición de salida del bucle infinito.
     $condition = ($provisioningState -eq $powerState)
@@ -23,7 +23,7 @@ function doUntilCondition {
     # Iteramos hasta que la VM esté en ejecución.
     while (!$condition) {
         if ($lastProvisioningState -ne $provisioningState) {
-            write-host $vm "en el grupo de recursos" $rg "tiene el estado" $provisioningState "(Esperando a que cambie el estado)"
+            write-host "$vm en el grupo de recursos $rg tiene el estado $provisioningState (Esperando a que cambie el estado)"
         }
         $lastProvisioningState = $provisioningState
  
@@ -31,14 +31,14 @@ function doUntilCondition {
         Start-Sleep -Seconds 5
 
         # Actualizamos estado.
-        $provisioningState = (Get-AzVM -resourcegroupname $rg -name $vm -Status).Statuses[1].Code
+        $provisioningState = (Get-AzVM -name $vm -resourcegroupname $rg -Status).Statuses[1].Code
  
         # Actualizamos condición de salida del bucle.
         $condition = ($provisioningState -eq $powerState)
     }
 
     # La VM ha alcanzado el estado deseado.
-    Write-Output $vm "en el grupo de recursos" $rg "tiene el estado" $provisioningState -ForegroundColor Green
+    Write-Output "$vm en el grupo de recursos $rg tiene el estado $provisioningState" -ForegroundColor Green
 }
 
 
@@ -51,10 +51,10 @@ Connect-AzAccount -Identity
 Write-Output "Conectado por medio de la identidad administrada de la cuenta de automatización."
 
 # Compruebo si la VM existe.
-Get-AzVM -ResourceGroupName $rgName -Name $vmName -ErrorVariable notPresent -ErrorAction SilentlyContinue
+Get-AzVM -Name $vmName -ResourceGroupName $rgName -ErrorVariable notPresent -ErrorAction SilentlyContinue
 
 if ($notPresent) {
-    Write-Output "No se ha encontrado la VM" $vmName "en el grupo de recursos" $rgName ". Finalizando script"
+    Write-Output "No se ha encontrado la VM $vmName en el grupo de recursos $rgName. Finalizando script"
     
     # Esperamos unos segundos para que terminen de llegar los eventos asíncronos antes de...
     Start-Sleep -Seconds 10
@@ -68,10 +68,10 @@ if ($startStopAction -eq "Start") {
     Write-Output "Iniciando la VM $vmName del grupo de recursos $rgName"
 
     # Inicio la VM y no espero.
-    Start-AzVM -ResourceGroupName $rgName -Name $vmName -noWait
+    Start-AzVM -Name $vmName -ResourceGroupName $rgName -noWait
 
     # Espero hasta que la VM se haya iniciado.
-    doUntilCondition -rg $rgName -vm $vmName -powerState "PowerState/running"
+    doUntilCondition -vm $vmName -rg $rgName -powerState "PowerState/running"
 }
 elseif ($startStopAction -eq "Stop") {
     Write-Output "Deteniendo la VM $vmName del grupo de recursos $rgName"
@@ -80,10 +80,10 @@ elseif ($startStopAction -eq "Stop") {
 
     # Detengo la VM y no espero. 
     # Importante poner "Force" porque el script falla esperando la confirmación del usuario al no poder leer la entrada estándar.
-    Stop-AzVM -ResourceGroupName $rgName -Name $vmName -noWait -Force
+    Stop-AzVM -Name $vmName -ResourceGroupName $rgName -noWait -Force
 
     # Espero hasta que la VM se haya detenido.
-    doUntilCondition -rg $rgName -vm $vmName -powerState "PowerState/deallocated"
+    doUntilCondition -vm $vmName -rg $rgName -powerState "PowerState/deallocated"
 }
 else {
     # La acción es incorrecta.
