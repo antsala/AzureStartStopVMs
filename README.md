@@ -218,8 +218,6 @@ Aquí veremos dos botones. El botón ***View*** permitirá en forma de solo lect
 
 Para ejecutarlo hacemos clic en el botón ***Start***.
 
-![Start](./img)
-
 Como el runbook tiene parámetros, habrá que rellerarlos. Todos los campos son obligatorios. 
 
 * ***VMNAME***: Es el nombre de la VM.
@@ -241,6 +239,15 @@ El resto de pestañas (***Output***, ***Errors***, ***Warnings***, ***All Logs**
 
 * ***Errors***: Mostrará si el script tiene errores y se usa en la fase de depuración.
 * ***All Logs***: Visualiza la salida estándar de la ejecución del script. Es importante observar que los resultados obtenidos pueden no verse en el orden correcto, ya que la ejecución es asíncrona, y unos resultados pueden venir antes que otros.
+
+Si seleccionamos la pestaña ***All Logs*** podremos ver todo lo que hace el script. Es muy importante observar que no produce errores ni avisos.
+
+![All logs](./img/202303051124.png)
+
+Pasado un rato, comprobamos que la VM se ha iniciado correctamente.
+
+![Running](./img/202303051126.png)
+
 
 
 
