@@ -4,14 +4,14 @@ Configuración de la automatización para programar el inicio y el apagado de VM
 Contenidos.
 
 1. [Configuración de VSC para trabajar con Azure Automation](https://github.com/antsala/AzureStartStopVMs#1-configuraci%C3%B3n-de-vsc-para-trabajar-con-azure-automation)
-2. Creación del grupo de recursos.
-3. Creación de la cuenta de automatización y asignación de rol.
-4. Verificar la conexión de VSC con la cuenta de automatización recién creada.
-5. Creación del runbook.
-6. Edición del código fuente del runbook desde VSC.
-7. Ejecución manual del runbook.
-8. Crear planificación de encendido/apagado de la VM.
-9. Crear alertas de Azure Monitor para verificar inicio/apagado.
+2. [Creación del grupo de recursos](https://github.com/antsala/AzureStartStopVMs#2-creaci%C3%B3n-del-grupo-de-recursos)
+3. [Creación de la cuenta de automatización y asignación de rol](https://github.com/antsala/AzureStartStopVMs#3-creaci%C3%B3n-de-la-cuenta-de-automatizaci%C3%B3n-y-asignaci%C3%B3n-de-rol)
+4. [Verificar la conexión de VSC con la cuenta de automatización recién creada](https://github.com/antsala/AzureStartStopVMs#4-verificar-la-conexi%C3%B3n-de-vsc-con-la-cuenta-de-automatizaci%C3%B3n-reci%C3%A9n-creada)
+5. [Creación del runbook](https://github.com/antsala/AzureStartStopVMs#5-creaci%C3%B3n-del-runbook)
+6. [Edición del código fuente del runbook desde VSC](https://github.com/antsala/AzureStartStopVMs#6-edici%C3%B3n-del-c%C3%B3digo-fuente-del-runbook-desde-vsc)
+7. [Ejecución manual del runbook](https://github.com/antsala/AzureStartStopVMs#7-ejecuci%C3%B3n-manual-del-runbook)
+8. [Crear planificación de encendido/apagado de la VM](https://github.com/antsala/AzureStartStopVMs#8-crear-planificaci%C3%B3n-de-encendidoapagado-de-la-vm)
+9. [Crear alertas de Azure Monitor para verificar inicio/apagado](https://github.com/antsala/AzureStartStopVMs#9-crear-alertas-de-azure-monitor-para-verificar-inicioapagado)
 
 
 
