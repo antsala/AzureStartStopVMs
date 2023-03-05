@@ -1,6 +1,20 @@
 # AzureStartStopVMs
 Configuración de la automatización para programar el inicio y el apagado de VMs.
 
+Contenidos.
+
+1. Configuración de VSC para trabajar con Azure Automation.
+2. Creación del grupo de recursos.
+3. Creación de la cuenta de automatización y asignación de rol.
+4. Verificar la conexión de VSC con la cuenta de automatización recién creada.
+5. Creación del runbook.
+6. Edición del código fuente del runbook desde VSC.
+7. Ejecución manual del runbook.
+8. Crear planificación de encendido/apagado de la VM.
+9. Crear alertas de Azure Monitor para verificar inicio/apagado.
+
+
+
 ## 1. Configuración de VSC para trabajar con Azure Automation.
 
 Como podrás ver, trabajar con un script de PowerShell directamente en la página web de Azure, editándolo desde el Runbook es impracticable, entre otras cosas porque no ofrece intelliSense. Por lo tanto usaremos VSC e instalaremos el plugin de Automatización. 
@@ -66,7 +80,6 @@ Asignamos el rol ***Contributor*** en el ámbito de la suscripción ***Ecosistem
 A partir de ahora, la identidad administrada asociada a esta cuenta de automatización tendrá el rol de contribuidor en la suscripción, por lo que será capaz de iniciar y detener VMs.
 
 
-
 ## 4. Verificar la conexión de VSC con la cuenta de automatización recién creada.
 
 Volvemos a VSC. En el menú lateral izquierdo, hacemos clic en el icono de Azure. También se puede conseguir con ***SHIFT+ALT+A***.
@@ -79,7 +92,8 @@ En la sección ***Azure Automation***, desplegamos la subscripción ***Ecosistem
 
 A partir de ahora podemos crear los componentes desde VSC o desde la Interfaz de Azure.
 
-## 5. Creación del runbook
+
+## 5. Creación del runbook.
 
 Creamos un runbook para iniciar/detener las VMs. Para ello, desde la interfaz de Azure, y dentro de la cuenta de automatización, hacemos clic en el botón ***Create a runbook***.
 
