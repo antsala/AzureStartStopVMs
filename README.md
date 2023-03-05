@@ -254,37 +254,13 @@ Para apagar la VM, procedemos a ejecutar el runbook, pasando el parámetro ***St
 
 ## 8. Crear planificación de encendio/apagado de la VM.
 
-La planificación (schedule) nos permite ejecutar un runbook en el momento que deseemos (con la periodicidad deseada.) Para crear una entramos en el runbook apropiado (en este caso ***auto-start-stop-vm-rb***) y hacemos clic en ***Schedules***, en la sección ***Resources***.
+La planificación (schedule) nos permite ejecutar un runbook en el momento que deseemos (con la periodicidad deseada.) Para crear una entramos en la planificación de la cuentas de automatización (en este caso ***auto-start-stop-vm-act***) y hacemos clic en ***Schedules***, en la sección ***Shared Resources***. Posteriormente clic en  ***Add a schedule***.
 
-![Schedule](./img/202303051249.png)
+![Schedule](./img/202303051315.png)
 
-Agregamos una planificación haciendo clic en ***Add a schedule***.
+A modo de ejemplo, supongamos que un curso de SAP se debe iniciar (START) todos los días desde el 6/3/2023 hasta el 10/3/2023, a las 9:00. Teniendo en cuenta la recomendación de Azure de iniciar 5 minutos antes, podría ser así.
 
-![Add Schedule](./img/202303051251.png)
-
-En la plafinicación debemos aportar dos conjuntos de datos.
-
-* ***Schedule***: Mediante el cuál asignaremos la planificación al runbook.
-* ***Parameters and run settings***: Donde aportamos los parámetros al runbook (VM, RG y start o stop)
-
-![Config schedule](./img/202303051252.png)
-
-Vamos a hacer un ejemplo de inicio de la VM. Hacemos clic en ***Parameters and run settings*** y lo configuramos así.
-
-![Parameters](./img/202303051255.png)
-
-Hacemos clic en ***OK***.
-
-A continuación configuramos la planificación, haciendo clic en ***Schedule***, y luego en ***Add a schedule***.
-
-![Add schedule](./img/202303051257.png)
-
-Aquí podemos poner cuando se ejecuta el runbook, incluyendo las repeticiones (recurrencia)
-
-![New Schedule](./img/202303051259.png)
-
-Hacemos clic en ***Create***
-
+![Schedule 6 al 10](./img/202303051319.png)
 
 
 
