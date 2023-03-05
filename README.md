@@ -297,7 +297,15 @@ Volviendo a las planificaciones de la cuenta de automatización, podremos ver ya
 
 ![Comprobación](./img/202303051339.png)
 
-Nota Importante: Habrá que crear una programación similar para detener las máquinas virtuales, para ello repetimos el procedimiento usando ***Stop*** como parámetro del runbook, el resultado sería este.
+***Nota Importante***: Habrá que crear una programación similar para detener las máquinas virtuales, para ello repetimos el procedimiento usando ***Stop*** como parámetro del runbook, el resultado sería este.
 
 ![Schedules](./img/202303051352.png)
+
+## 9. Crear alertas de Azure Monitor para verificar inicio/apagado.
+
+Como detalle, configuraremos alertas para confirmar la automatización. En primer lugar vamos a crear un grupo de acción en el que indicaremos cómo enviar la alerta. Para ello buscamos el recurso ***Alerts*** en Azure. A continuación seleccionamos ***Action groups***.
+
+![Action Groups](./img/202303051401.png)
+
+
 
