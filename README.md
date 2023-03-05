@@ -365,7 +365,10 @@ Aparecerá la alerta en la lista de alertas de Azure.
 
 ![Alerts](./img/202303051444.png)
 
-Para terminar, creamos otra alerta que avise cuando la máquina virtual se ha detenido (con desasignación). La señal que debemos configurar es ***Deallocate Virtual Machine (Microsoft.Compute/virtualMachines)***.
+Para terminar, creamos otra alerta que avise cuando la máquina virtual se ha detenido (con desasignación). La señal que debemos configurar es ***Deallocate Virtual Machine (Microsoft.Compute/virtualMachines)***. 
 
 ![Deallocate](./img/202303051446.png)
 
+El resultado se puede ver en la siguiente imagen, donde aparecen las dos alertas configuradas.
+
+![Alerts](./img/202303051450.png)
