@@ -262,6 +262,42 @@ A modo de ejemplo, supongamos que un curso de SAP se debe iniciar (START) todos 
 
 ![Schedule 6 al 10](./img/202303051319.png)
 
+Hacemos clic en el botón ***Create***. Se creará la plafinicación, pero no estará asociada aún a ningun runbook. Esto se puede ver haciendo clic en la planificación recién creada.
 
+![No runbook](./img/202303051324.png)
 
+Para asignarle un runbook hacemos clic en ***Runbooks***, en la sección ***Process Automation***.
+
+![Runbooks](./img/202303051327.png)
+
+Elegimos el runbook apropiado, en este caso ***auto-start-stop-vm-rb***.
+
+![Runbook auto-start-stop-vm-rb](./img/202303051329.png)
+
+Y le asignamos la planificación por medio de ***Link to schedule***.
+
+![Link to Schedule](./img/202303051330.png)
+
+Ahora debemos hacer dos cosas; En ***Schedule*** seleccionar la planificación que hemos creado antes y, en ***Parameters and run Settings*** proporcionar los parámetros para que se ejecute el runbook.
+
+![Config](./img/202303051332.png)
+
+Elegimos ***Curso SAP-START-Semana 6 al 10 Marzo***.
+
+![Semana 6 al 10](./img/202303051334.png)
+
+De vuelta a la planificación del runbook, hacemos clic en ***Parameters and run Settings*** y lo configuramos así.
+(Nota: Asegurar que se pone ***Start***)
+
+![Parámetros](./img/202303051336.png)
+
+Hacemos clic en ***OK*** dos veces.
+
+Volviendo a las planificaciones de la cuenta de automatización, podremos ver ya que la planificación está asociada al runbook correcto.
+
+![Comprobación](./img/202303051339.png)
+
+Nota Importante: Habrá que crear una programación similar para detener las máquinas virtuales, para ello repetimos el procedimiento usando ***Stop*** como parámetro del runbook, el resultado sería este.
+
+![Schedules](./img/202303051352.png)
 
