@@ -248,10 +248,7 @@ Pasado un rato, comprobamos que la VM se ha iniciado correctamente.
 
 ![Running](./img/202303051126.png)
 
+Para apagar la VM, procedemos a ejecutar el runbook, pasando el parámetro ***Stop***. Procedemos a apagarla.
 
-
-
-
-
-
+![Stop](./img/202303051158.png)
 
