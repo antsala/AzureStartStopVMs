@@ -252,7 +252,7 @@ Para apagar la VM, procedemos a ejecutar el runbook, pasando el parámetro ***St
 
 ![Stop](./img/202303051158.png)
 
-## 8. Crear planificación de encendio/apagado de la VM.
+## 8. Crear planificación de encendido/apagado de la VM.
 
 La planificación (schedule) nos permite ejecutar un runbook en el momento que deseemos (con la periodicidad deseada.) Para crear una entramos en la planificación de la cuentas de automatización (en este caso ***auto-start-stop-vm-act***) y hacemos clic en ***Schedules***, en la sección ***Shared Resources***. Posteriormente clic en  ***Add a schedule***.
 
