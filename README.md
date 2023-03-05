@@ -218,24 +218,24 @@ Aquí veremos dos botones. El botón ***View*** permitirá en forma de solo lect
 
 Para ejecutarlo hacemos clic en el botón ***Start***.
 
-![Start](./img/202303042130.png)
+![Start](./img)
 
 Como el runbook tiene parámetros, habrá que rellerarlos. Todos los campos son obligatorios. 
 
-* ***RGNAME***: Es el nombre del grupo de recursos que tiene la VM.
 * ***VMNAME***: Es el nombre de la VM.
+* ***RGNAME***: Es el nombre del grupo de recursos que tiene la VM.
 * ***STARTSTOPACTION***: Debe ser ***Start*** o ***Stop***. No se admite ningún otro valor.
 
-![Parámetros](./img/202303042134.png)
+![Parámetros](./img/202303051120.png)
 
 A modo de ejemplo iniciamos con el parámetro ***Start*** la VM ***HyperV02*** ubicada en el grupo de recursos ***FdlSM_PruebaLabs***. Hacemos clic el el botón ***OK***.
 
-![Start](./img/202303051029.png)
+![Start](./img/202303051121.png)
 
 Se creará un trabajo para ejecutar el script de PowerShell del runbook, tal y como puede apreciarse en la siguiente imagen.
 (Nota: Observa que en la pestaña ***input*** se muestran los parámetros de entrada al script.)
 
-![Job Input](./img/202303051032.png)
+![Job Input](./img/202303051122.png)
 
 El resto de pestañas (***Output***, ***Errors***, ***Warnings***, ***All Logs***, ***Exception***), destacamos las dos siguientes:
 
