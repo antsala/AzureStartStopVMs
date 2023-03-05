@@ -359,7 +359,7 @@ En la pestaña de condiciones debemos elegir las señales que dispararán las al
 
 En la página ***Create an alert rule***, configuramos ***Alert logic*** de forma que se emitan alertas de inicio de VM (Estado) cuyo inicio haya sido provocado por la cuenta de automatización ***auto-start-stop-vm-act***.
 
-![Alert logic](./img/202303051549.png)
+![Alert logic](./img/202303051639.png)
 
 Avanzamos a ***Actions*** y hacemos clic en ***Select action groups***.
 
