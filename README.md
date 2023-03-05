@@ -307,5 +307,65 @@ Como detalle, configuraremos alertas para confirmar la automatización. En prime
 
 ![Action Groups](./img/202303051401.png)
 
+Hacemos clic en ***Create***.
 
+![Create](./img/202303051407.png)
+
+Configuramos la pestaña ***Basics*** de la siguiente forma y hacemos clicn en ***Next***.
+
+![Basics](./img/202303051409.png)
+
+En ***Notifications*** elegimos la forma deseada. 
+
+![Basics](./img/202303051412.png)
+
+Avanzamos hacia ***Actions***, donde no configuramos nada. Hacemos clic en ***Review + Create*** y posteriormente en ***Create***.
+
+En ***Action groups*** podremos ver el grupo de acción recién creado.
+
+![action groups](./img/202303051417.png)
+
+Es el momento de crear las reglas de alertas. Para ello, en las alertas, elegimos ***Alerts rules***.
+
+![Alert rules](./img/202303051418.png)
+
+clic en ***Create***.
+
+![Create](./img/202303051421.png)
+
+En la sección ***Scope*** establecemos el ámbito para el que se dispararán las alertas. Elegimos la subscripción ***Ecosistema de aprendizaje*** y refinamos el ámbito para emitir alertas solo de ***Virtual Machines***. Hacemos clic en ***Apply***.
+
+![Create](./img/202303051424.png)
+
+Clic en Siguiente.
+
+En la pestaña de condiciones debemos elegir las señales que dispararán las alertas. Hacemos clic en ***Add condition***. En ***Select a signal*** filtramos por ***start*** y hacemos clic en ***Start Virtual Machine (Microsoft.Compute/virtualMachines)***.
+
+![start](./img/202303051427.png)
+
+En la página ***Create an alert rule***, configuramos ***Alert logic*** de forma que se emitan alertas de inicio de VM (Estado ) cuyo inicio haya sido provocado por la cuenta de automatización ***auto-start-stop-vm-act***.
+
+![Alert logic](./img/202303051435.png)
+
+Avanzamos a ***Actions*** y hacemos clic en ***Select action groups***.
+
+![Select action group](./img/202303051437.png)
+
+Elegimos el grupo de acción que creamos anteriormente y hacemos clic en ***Select***.
+
+![Select action group 2](./img/202303051439.png)
+
+Avanzamos a ***Details***. Lo configuramos así.
+
+![Details](./img/202303051441.png)
+
+Clic en ***Review + Create*** y luego en ***Create***.
+
+Aparecerá la alerta en la lista de alertas de Azure.
+
+![Alerts](./img/202303051444.png)
+
+Para terminar, creamos otra alerta que avise cuando la máquina virtual se ha detenido (con desasignación). La señal que debemos configurar es ***Deallocate Virtual Machine (Microsoft.Compute/virtualMachines)***.
+
+![Deallocate](./img/202303051446.png)
 
