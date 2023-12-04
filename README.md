@@ -1,6 +1,8 @@
 # AzureStartStopVMs
 Configuración de la automatización para programar el inicio y el apagado de VMs.
 
+`Nota: Si estás buscando el inicio/Apagado de un grupo de VMs, mira el apartado 10.`
+
 Contenidos.
 
 1. [Configuración de VSC para trabajar con Azure Automation](https://github.com/antsala/AzureStartStopVMs#1-configuraci%C3%B3n-de-vsc-para-trabajar-con-azure-automation)
@@ -12,6 +14,9 @@ Contenidos.
 7. [Ejecución manual del runbook](https://github.com/antsala/AzureStartStopVMs#7-ejecuci%C3%B3n-manual-del-runbook)
 8. [Crear planificación de encendido/apagado de la VM](https://github.com/antsala/AzureStartStopVMs#8-crear-planificaci%C3%B3n-de-encendidoapagado-de-la-vm)
 9. [Crear alertas de Azure Monitor para verificar inicio/apagado](https://github.com/antsala/AzureStartStopVMs#9-crear-alertas-de-azure-monitor-para-verificar-inicioapagado)
+10. [Runbook para iniciar/detener todas las VMs de un RG](https://github.com/antsala/AzureStartStopVMs#10-runbook-para-iniciardetener-todas-las-vms-de-un-rg)
+
+
 
 
 
