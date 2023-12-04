@@ -15,6 +15,7 @@ Contenidos.
 
 
 
+
 ## 1. Configuración de VSC para trabajar con Azure Automation.
 
 Como podrás ver, trabajar con un script de PowerShell directamente en la página web de Azure, editándolo desde el Runbook es impracticable, entre otras cosas porque no ofrece intelliSense. Por lo tanto usaremos VSC e instalaremos el plugin de Automatización. 
@@ -386,3 +387,100 @@ Para terminar, creamos otra alerta que avise cuando la máquina virtual se ha de
 El resultado se puede ver en la siguiente imagen, donde aparecen las dos alertas configuradas.
 
 ![Alerts](./img/202303051450.png)
+
+
+## 10. Runbook para iniciar/detener todas las VMs de un RG.
+
+He desarrollado un nuevo runbook que inicia/detiene todas las VMs de un grupos de recursos. Se utiliza para complementar el despliegue automatizado de laboratorios en el Bastión de Azure. El runbook se llama `auto-start-stop-rg-vms-rb` y su código es el siguiente.
+
+```
+Param (
+    [Parameter (Mandatory = $true)] [String] $rgName,
+    [Parameter (Mandatory = $true)] [String] $startStopAction = "Start"
+)
+
+function doUntilCondition {
+    param(
+        [Parameter(Mandatory = $true)] [String]$rg,  
+        [Parameter(Mandatory = $true)] [String]$powerState
+    )
+    # Esta función espera a que todas las VMs del grupo de recursos alcancen el estado deseado.
+
+    do {
+        $seguir = $false
+
+        foreach ($vm in $vms) {
+            # Tomo el estado de aprovisionamiento de la VM.
+            $provisioningState = (Get-AzVM -name $($vm.Name) -resourcegroupname $rg -Status).Statuses[1].Code
+
+            Write-Host "El estado de la VM '$($vm.Name)' es '$provisioningState'. Esperando que alcance estado '$powerState'." 
+            
+            if ($provisioningState -ne $powerState) {
+                # Basta que una sola VM no haya alcanzado el estado de aprovisionamiento esperado, seguimos.
+                $seguir = $true
+            }
+        }
+
+        Write-Host
+
+        # Esperamos para actualizar.
+        Start-Sleep -Seconds 15
+    } while ($seguir)
+
+    # Objetivo conseguido
+    Write-Output "Todas las VMs en el grupo de recursos $rg han llegado al estado $powerState" 
+}
+
+
+# Programa principal.
+
+Connect-AzAccount -Identity 
+Write-Host "Conectado por medio de la identidad administrada de la cuenta de automatización."
+
+# Cargo en una lista las VMs presentes en el grupo de recursos.
+$vms = Get-AzVM -ResourceGroupName $rgName -ErrorVariable notPresent -ErrorAction SilentlyContinue
+
+
+if ($notPresent) {
+    Write-Host "No hay máquinas virtuales en el grupo de recursos '$rgName'. Finalizando script"
+    
+    # Esperamos unos segundos para que terminen de llegar los eventos asíncronos antes de...
+    Start-Sleep -Seconds 10
+
+    # Lanzar una excepción para que finalice el script.
+    throw "VM no encontrada"
+}
+
+# Mostrar información sobre cada VM en la lista
+foreach ($vm in $vms) {
+    Write-Host "Encontrada VM: $($vm.Name)" 
+}
+
+if ($startStopAction -eq "Start") {
+    Write-Host "Iniciando las VMs del grupo de recursos '$rgName'" 
+
+    foreach ($vm in $vms) {
+        # Inicio la VM y no espero.
+        Start-AzVM -Name $($vm.Name) -ResourceGroupName $rgName -noWait
+    }
+
+    # Espero hasta que las VMs se hayan iniciado.
+    doUntilCondition -rg $rgName -powerState "PowerState/running"
+}
+elseif ($startStopAction -eq "Stop") {
+    Write-Host "Deteniendo las VMs del grupo de recursos '$rgName'" 
+
+    foreach ($vm in $vms) {
+        # Detengo la VM y no espero. 
+        # Importante poner "Force" porque el script falla esperando la confirmación del usuario al no poder leer la entrada estándar.
+        Stop-AzVM -Name $($vm.Name) -ResourceGroupName $rgName -noWait -Force
+    }
+        
+    # Espero hasta que la VM se haya detenido.
+    doUntilCondition -rg $rgName -powerState "PowerState/deallocated"
+}
+else {
+    # La acción es incorrecta.
+    Write-Host "La acción" $startStopAction "no se puede procesar." 
+}
+```
