@@ -1,7 +1,7 @@
 # AzureStartStopVMs
 Configuración de la automatización para programar el inicio y el apagado de VMs.
 
-`Nota: Si estás buscando el inicio/Apagado de un grupo de VMs, mira el apartado 10.`
+`Nota: Si estás buscando el inicio/apagado de un grupo de VMs, mira el apartado 10.`
 
 Contenidos.
 
@@ -396,7 +396,7 @@ El resultado se puede ver en la siguiente imagen, donde aparecen las dos alertas
 
 ## 10. Runbook para iniciar/detener todas las VMs de un RG.
 
-He desarrollado un nuevo runbook que inicia/detiene todas las VMs de un grupos de recursos. Se utiliza para complementar el despliegue automatizado de laboratorios en el Bastión de Azure. El runbook se llama `auto-start-stop-rg-vms-rb` y su código es el siguiente.
+He desarrollado un nuevo runbook que inicia/detiene todas las VMs de un grupo de recursos. Se utiliza para complementar el despliegue automatizado de laboratorios en el Bastión de Azure. El runbook se llama `auto-start-stop-rg-vms-rb` y su código es el siguiente.
 
 ```
 Param (
